@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2f4157; /* color de fondo */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px; /* Aumenta el tamaño máximo del contenedor */
+}
+
+.logo-image {
+    width: 80%; /* Ajusta el tamaño de la imagen */
+    max-width: 400px; /* Limita el tamaño máximo de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 30px; /* Espacio entre la imagen y el formulario */
+}
+
+.login-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos dentro del formulario */
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #c7d9e5; /* color de los campos de entrada */
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-button {
+    width: 100%;
+    max-width: 300px; /* Limita el ancho máximo del botón */
+    padding: 10px;
+    background-color: #577c8e; /* color del botón */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px; /* Añade un pequeño espacio encima del botón */
+}
+
+.login-button:hover {
+    background-color: #6c94c4; /* tono más oscuro al pasar el mouse */
+}

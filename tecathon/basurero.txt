@@ -1,0 +1,56 @@
+menu
+// Recuperar los datos almacenados en localStorage
+window.onload = function() {
+    const ingresoMensual = localStorage.getItem("ingresoMensual") || "$0.00";
+    const cuentaTotal = localStorage.getItem("cuentaTotal") || "$0.00";
+
+    // Mostrar los valores en el HTML
+    document.getElementById("ingresoMensual").textContent = `$${parseFloat(ingresoMensual).toLocaleString()}`;
+    document.getElementById("cuentaTotal").textContent = `$${parseFloat(cuentaTotal).toLocaleString()}`;
+}
+
+
+registro
+function guardarDatos() {
+    const nombre = document.getElementById("nombre").value;
+    const apellidos = document.getElementById("apellidos").value;
+    const correo = document.getElementById("correo").value;
+    const telefono = document.getElementById("telefono").value;
+    const ingreso = document.getElementById("ingreso").value;
+    const periodoIngresos = document.getElementById("periodoIngresos").value;
+    const objetivo = document.getElementById("objetivo").value;
+        // Validar que los campos no estén vacíos y que sean números válidos
+    if (ingreso === "" || cuenta === "" || isNaN(ingreso) || isNaN(cuenta)) {
+        alert("Por favor, ingresa valores numéricos válidos en ambos campos.");
+        return;
+    }
+        // Validar que los campos no estén vacíos y que sean números válidos
+        if (ingreso === "" || cuenta === "" || isNaN(ingreso) || isNaN(cuenta)) {
+            alert("Por favor, ingresa valores numéricos válidos en ambos campos.");
+            return;
+        }
+
+    // Guardar datos en variables o hacer lo necesario con ellos
+    console.log("Datos guardados:");
+    console.log("Nombre:", nombre);
+    console.log("Apellidos:", apellidos);
+    console.log("Correo:", correo);
+    console.log("Teléfono:", telefono);
+    console.log("Ingreso:", ingreso);
+    console.log("Periodo de ingresos:", periodoIngresos);
+    console.log("Objetivo:", objetivo);
+
+    // Almacenar en localStorage si es necesario
+    localStorage.setItem("nombre", nombre);
+    localStorage.setItem("apellidos", apellidos);
+    localStorage.setItem("correo", correo);
+    localStorage.setItem("telefono", telefono);
+    localStorage.setItem("ingreso", ingreso);
+    localStorage.setItem("periodoIngresos", periodoIngresos);
+    localStorage.setItem("objetivo", objetivo);
+    window.location.href = "menu.html";
+}
+document.getElementById("guardar").addEventListener("click", guardarDatos);
+
+
+
