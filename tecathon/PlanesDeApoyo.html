@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Gastos Hormiga</title>
+</head>
+<body>
+    <h1>Control de Gastos Hormiga</h1>
+
+    <!-- Mostrar ingreso mensual y cuenta total -->
+    <h2>Ingreso Mensual</h2>
+    <p id="ingresoMensual"></p>
+
+    <h2>Cuenta Total</h2>
+    <p id="cuentaTotal"></p>
+
+    <!-- Formulario de agregar nuevo gasto -->
+    <h2>Agregar Nuevo Gasto</h2>
+    <form id="gastoForm">
+        <label for="nuevoGasto">Nombre del Gasto:</label>
+        <input type="text" id="nuevoGasto" required>
+        <label for="montoGasto">Monto:</label>
+        <input type="number" id="montoGasto" required>
+        
+        <label for="tipoGasto">Tipo de Gasto:</label>
+        <select id="tipoGasto">
+            <option value="fijo">Fijo</option>
+            <option value="variable">Variable</option>
+            <option value="extraordinario">Extraordinario</option>
+            <option value="inversion">Inversión</option>
+            <option value="indefinido" selected>Indefinido</option>
+        </select>
+        
+        <button type="submit">Agregar Gasto</button>
+    </form>
+
+    <script>
+        window.onload = function() {
+            const ingresoMensual = localStorage.getItem("ingresoMensual") || "0";
+            const cuentaTotal = parseFloat(localStorage.getItem("cuentaTotal")) || 0;
+
+            // Mostrar los valores en el HTML
+            document.getElementById("ingresoMensual").textContent = `$${parseFloat(ingresoMensual).toLocaleString()}`;
+            document.getElementById("cuentaTotal").textContent = `$${cuentaTotal.toLocaleString()}`;
+
+            // Agregar un nuevo gasto
+            document.getElementById("gastoForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+                const nuevoGasto = document.getElementById("nuevoGasto").value;
+                const montoGasto = parseFloat(document.getElementById("montoGasto").value);
+                const tipoGasto = document.getElementById("tipoGasto").value;
+
+                if (nuevoGasto && !isNaN(montoGasto)) {
+                    const gastosList = JSON.parse(localStorage.getItem("gastos")) || [];
+                    gastosList.push({ nombre: nuevoGasto, monto: montoGasto, tipo: tipoGasto });
+                    localStorage.setItem("gastos", JSON.stringify(gastosList));
+                }
+            });
+        }
+    </script>
+</body>
+</html>
